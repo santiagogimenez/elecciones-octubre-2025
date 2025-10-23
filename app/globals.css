@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  height: 100%;
+  background: #0b1220;
+  color: #f8fafc;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  @apply rounded-2xl px-4 py-3 font-medium text-base;
+  min-height: 48px;
+  touch-action: manipulation;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+input, select {
+  @apply bg-slate-800 rounded-xl px-4 py-3 w-full text-base;
+  min-height: 48px;
+}
+
+input:focus, select:focus {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+input[type="number"] {
+  @apply text-lg font-semibold;
+}
+
+/* Ocultar spinner de inputs numéricos en móvil */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.card {
+  @apply bg-slate-900/70 rounded-2xl p-4 shadow;
+}
+
+.badge {
+  @apply text-xs bg-slate-700 px-3 py-1.5 rounded-full whitespace-nowrap;
+}
+
+label {
+  @apply text-sm font-medium block mb-1.5;
+}
+
+/* Animaciones suaves */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Mejorar scroll en iOS */
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Safe areas para notch en iPhone */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+}
